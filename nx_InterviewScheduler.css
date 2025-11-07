@@ -1,0 +1,27 @@
+/* This is the key fix: forces table to obey column widths */
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* Sets the combobox to fill its table cell (which is 50% wide) */
+.panel-member-combobox {
+    width: 100%; /* Use 100% to fit inside the cell */
+}
+
+/* Sets the combobox to fill its table cell (which is 30% wide) */
+.round-combobox {
+    width: 100%; /* Use 100% to fit inside the cell */
+}
+
+/* Ensures icons and boxes are aligned to the top of the row */
+td {
+    vertical-align: top;
+    padding-top: 4px; 
+}
+
+/* Aligns the action icons neatly */
+.action-cell {
+    text-align: left;
+    padding-left: 8px; 
+}

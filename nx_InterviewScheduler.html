@@ -1,0 +1,83 @@
+<template>
+    <lightning-card title="Assign Panelist" icon-name="standard:people">
+        <div class="slds-p-around_medium">
+
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" style="width:55%;">
+                            <div class="slds-truncate" title="Panel Member">Panel Member</div>
+                        </th>
+                        <th scope="col" style="width:35%;">
+                            <div class="slds-truncate" title="Round">Round</div>
+                        </th>
+                        <th scope="col" style="width:10%;">
+                            <div class="slds-truncate" title="Action"></div> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={panelMembers} for:item="panel">
+                        <tr key={panel.id}>
+                            <td>
+                                <lightning-combobox
+                                    label="Panel Member"
+                                    variant="label-hidden"
+                                    placeholder="Select a Panelist"
+                                    options={panelistOptions}
+                                    value={panel.contactId}
+                                    data-id={panel.id}
+                                    onchange={handleContactChange}
+                                    class="panel-member-combobox" 
+                                ></lightning-combobox>
+                            </td>
+
+                            <td>
+                                <lightning-combobox
+                                    name="round"
+                                    label="Round"
+                                    variant="label-hidden"
+                                    placeholder="Select Round"
+                                    value={panel.round}
+                                    options={roundOptions}
+                                    data-id={panel.id}
+                                    onchange={handleRoundChange}
+                                    class="round-combobox"
+                                ></lightning-combobox>
+                            </td>
+
+                            <td class="action-cell">
+                                <template if:true={panel.showAdd}>
+                                    <lightning-button-icon
+                                        icon-name="utility:add"
+                                        variant="bare"
+                                        alternative-text="Add Row"
+                                        title="Add Row"
+                                        onclick={handleAddRow}
+                                    ></lightning-button-icon>
+                                </template>
+                                <template if:true={panel.showRemove}>
+                                    <lightning-button-icon
+                                        icon-name="utility:dash"
+                                        variant="bare"
+                                        alternative-text="Remove Row"
+                                        title="Remove Row"
+                                        onclick={handleRemoveRow}
+                                        data-id={panel.id}
+                                    ></lightning-button-icon>
+                                </template>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <div slot="footer" class="slds-text-align_right">
+            <lightning-button
+                label="Save"
+                variant="brand"
+                onclick={handleSave}
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>
