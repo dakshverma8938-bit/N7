@@ -20,3 +20,8 @@ td {
     padding-top: 4px; 
 }
 
+/* Aligns the action icons neatly */
+.action-cell {
+    text-align: left;
+    padding-left: 8px; 
+}
